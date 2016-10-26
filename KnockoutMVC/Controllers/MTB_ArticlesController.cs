@@ -54,6 +54,20 @@ namespace KnockoutMVC.Controllers
             return View(mTB_Articles);
         }
 
+        public ActionResult CreateJS()
+        {
+            return View();
+        }
+        [HttpPost]
+        public string CreateJS(MTB_Articles mtb_article)
+        {
+            db.MTB_Articles.Add(mtb_article);
+            db.SaveChanges();
+            return "success";
+        }
+
+
+
         // GET: MTB_Articles/Edit/5
         public ActionResult Edit(int? id)
         {
