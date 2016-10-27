@@ -59,11 +59,15 @@ namespace KnockoutMVC.Controllers
             return View();
         }
         [HttpPost]
-        public string CreateJS(MTB_Articles mtb_article)
+        public JsonResult CreateJS(MTB_Articles mtb_article)
         {
-            db.MTB_Articles.Add(mtb_article);
-            db.SaveChanges();
-            return "success";
+            if (ModelState.IsValid)
+            {
+                db.MTB_Articles.Add(mtb_article);
+                db.SaveChanges();
+              
+            }
+            return Json(mtb_article,JsonRequestBehavior.AllowGet);
         }
 
 
